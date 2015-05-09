@@ -2,33 +2,17 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.io.*;
 
 public class TextGenerator {
 	private JFrame frame;
-    private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
-    
+	private TextFileManager filemanager;
+	
+	
 	public TextGenerator(){
 		setUpGUI();
 	}
-	
-	private void openFile(){
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt files only", "txt");
-		fileChooser.setFileFilter(filter);
-		int returnVal = fileChooser.showOpenDialog(null);
-		if(returnVal == fileChooser.APPROVE_OPTION){
-			File currentFile = fileChooser.getSelectedFile();
-			String string = TextFileManager.readFile(currentFile);
-			System.out.println(string);
-		}
-
-	
-	
-	}
-	
-	
 	private void setUpGUI(){
 		frame = new JFrame("textgenerator");
 		
@@ -38,7 +22,7 @@ public class TextGenerator {
 		JPanel toolBar = new JPanel();
 		JButton importButton = new JButton("Import");
 		importButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){openFile();}
+			public void actionPerformed(ActionEvent e){}
 			
 		});
 		JButton saveButton = new JButton("Save");

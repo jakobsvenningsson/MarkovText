@@ -1,0 +1,36 @@
+
+import java.io.*;
+import java.lang.StringBuilder;
+public class TextFileManager {
+
+	
+	/*
+	 * 
+	 */
+	
+	
+public static String readFile(File textFile){
+		try{
+			BufferedReader input = new BufferedReader(new FileReader(textFile));
+			String line;
+			StringBuilder s = new StringBuilder();
+			while((line = input.readLine())!= null){
+				s.append(line);
+			}
+			input.close();
+			return s.toString();
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File not found");
+			return null;
+		}
+		catch(IOException e){
+			System.out.println("Something went wrong");
+			return null;
+		}
+	}
+	
+	
+}
+
+

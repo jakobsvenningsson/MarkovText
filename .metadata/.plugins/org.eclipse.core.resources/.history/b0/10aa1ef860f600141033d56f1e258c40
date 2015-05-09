@@ -8,25 +8,21 @@ import java.io.*;
 
 public class TextGenerator {
 	private JFrame frame;
-    private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
-    
+	private File file;
+    private TextFileManager filemanager;
+
 	public TextGenerator(){
 		setUpGUI();
 	}
 	
 	private void openFile(){
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt files only", "txt");
-		fileChooser.setFileFilter(filter);
-		int returnVal = fileChooser.showOpenDialog(null);
-		if(returnVal == fileChooser.APPROVE_OPTION){
-			File currentFile = fileChooser.getSelectedFile();
-			String string = TextFileManager.readFile(currentFile);
-			System.out.println(string);
+			file = filemanager.chooseFile();
+			filemanager.readFile(file);
 		}
 
 	
 	
-	}
+	
 	
 	
 	private void setUpGUI(){

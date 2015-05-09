@@ -1,0 +1,47 @@
+import java.awt.*; 
+import java.awt.event.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.*;
+import java.io.*;
+
+public class TextFileManager {
+	private File textFile;
+    private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
+	public TextFileManager(){
+		setUpGUI();
+	}
+	
+	
+	
+
+	private File openFile(){
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt files only", "txt");
+		fileChooser.setFileFilter(filter);
+		int returnVal = fileChooser.showOpenDialog(null);
+		if(returnVal == fileChooser.APPROVE_OPTION){
+			textFile = fileChooser.getSelectedFile();
+			return readFile(textFile);
+		}
+		
+		return null;
+		
+			
+		}
+	
+	public void readFile(File textFile){
+		try{
+			BufferedReader input = new BufferedReader(new FileReader(textFile));
+			String s = input.readLine();
+			System.out.println(s);
+			input.close();
+		}
+		catch(FileNotFoundException e){System.out.println("File not found");
+		}
+		catch(IOException e){System.out.println("Something went wrong");
+		}
+	}
+	
+	
+}
+
+

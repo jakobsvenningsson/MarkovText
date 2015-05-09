@@ -21,7 +21,6 @@ public class TextGenerator {
 		if(returnVal == fileChooser.APPROVE_OPTION){
 			File currentFile = fileChooser.getSelectedFile();
 			String string = TextFileManager.readFile(currentFile);
-			System.out.println(string);
 		}
 
 	

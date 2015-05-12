@@ -1,0 +1,37 @@
+
+import java.io.*;
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+public class TextFileManager {
+	
+public static ArrayList<String> readFile(File textFile,ArrayList<String> wordlist){
+		try{
+			BufferedReader input = new BufferedReader(new FileReader(textFile));
+			String line;
+			while((line = input.readLine())!= null){
+				StringTokenizer token = new StringTokenizer(line," ");
+				while(token.hasMoreTokens()){
+					wordlist.add(token.nextToken());
+				}
+			}
+			input.close();
+			return wordlist;
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File not found");
+			return null;
+		}
+		catch(IOException e){
+			System.out.println("Something went wrong");
+			return null;
+		}
+	}
+
+public String saveFile(String s){
+	
+}
+	
+	
+}
+
+

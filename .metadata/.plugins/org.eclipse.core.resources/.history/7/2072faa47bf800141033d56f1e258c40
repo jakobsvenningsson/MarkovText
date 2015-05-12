@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+public class WordList {
+	HashMap<String,LinkedList<String>> corpus = new HashMap<String,LinkedList<String>>();
+	LinkedList<String> words = new LinkedList<String>();
+
+
+	public WordList(){
+		String sentence = "Hej jag heter jakob. Jakob Šr dum. Jakob Šr kung. hejsan jag heter malin";
+		StringTokenizer token = new StringTokenizer(sentence," ");
+		while(token.hasMoreTokens()){
+			words.add(token.nextToken());
+		}
+	
+	}
+	
+	
+	public void createCorpus(){
+		for(int i=0;i<words.size()-1;i++){
+			if(!corpus.containsKey(words.get(i))){
+				corpus.put(words.get(i),new LinkedList<String>());
+			}
+			
+            System.out.println(corpus.get(words.get(i)));
+		}
+		
+	}
+	
+	public static void main(String []args){
+		WordList list = new WordList();
+		list.createCorpus();
+		
+	}
+
+}
